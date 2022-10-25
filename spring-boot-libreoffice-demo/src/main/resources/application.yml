@@ -1,0 +1,22 @@
+server:
+  port: 8880
+
+spring:
+  thymeleaf:
+    prefix: classpath:/view/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+#online:
+#  pdfPath: D:\logs
+#  libreoffice: C:\Program Files\LibreOffice\program\soffice.exe
+online:
+  pdfPath: /pdf
+  libreoffice: libreoffice7.2
