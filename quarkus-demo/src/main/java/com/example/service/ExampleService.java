@@ -1,5 +1,7 @@
 package com.example.service;
 
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 
 /**
@@ -11,6 +13,9 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class ExampleService {
 
+
+    @ConfigProperty(name = "greeting.message")
+    String message;
     /**
      *
      * @param name
