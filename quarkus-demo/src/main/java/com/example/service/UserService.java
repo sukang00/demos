@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.entity.User;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -20,7 +21,10 @@ public class UserService {
     @Inject
     EntityManager entityManager;
 
+    @ConfigProperty(name = "greeting.message")
+    String message;
     public List<User> get() {
+        System.out.println(message);
         return entityManager.createNamedQuery("User.findAll", User.class)
                 .getResultList();
     }

@@ -14,8 +14,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class ExampleService {
 
 
-    @ConfigProperty(name = "greeting.message")
-    String message;
+
     /**
      *
      * @param name
