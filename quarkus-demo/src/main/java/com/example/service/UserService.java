@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.entity.User;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.jboss.logging.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -21,10 +22,11 @@ public class UserService {
     @Inject
     EntityManager entityManager;
 
+    private static final Logger LOG = Logger.getLogger(UserService.class);
     @ConfigProperty(name = "greeting.message")
     String message;
     public List<User> get() {
-        System.out.println(message);
+        LOG.info("测试日志打印："+message);
         return entityManager.createNamedQuery("User.findAll", User.class)
                 .getResultList();
     }
