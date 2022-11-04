@@ -1,6 +1,7 @@
 package com.example;
 
 import com.alibaba.fastjson.JSON;
+import com.example.entity.User;
 import com.example.service.UserService;
 
 import javax.inject.Inject;
@@ -8,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 /**
  * @author sukang
@@ -23,7 +25,7 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")
-    public String getList() {
-        return JSON.toJSONString(userService.get());
+    public List<User> getList() {
+        return userService.get();
     }
 }
