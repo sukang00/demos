@@ -1,0 +1,48 @@
+greeting:
+  message: hello
+"%dev":
+  quarkus:
+    http:
+      port: 8080
+    hibernate-orm:
+      log:
+        sql: true
+    datasource:
+      db-kind: mysql
+      jdbc:
+        url: jdbc:mysql://127.0.0.1:3306/quarkus
+        max-size: 8
+        min-size: 2
+      username: root
+      password: root
+    redis:
+      hosts: redis://localhost:6379
+      database: 0
+      timeout: 10s
+quarkus:
+  log:
+    level: INFO
+  category:
+    "org.hibernate":
+      level: DEBUG
+    "io.quarkus":
+      level: DEBUG
+"%test":
+   quarkus:
+     http:
+       port: 8888
+     hibernate-orm:
+       log:
+         sql: true
+     datasource:
+       db-kind: mysql
+       jdbc:
+         url: jdbc:mysql://127.0.0.1:3306/quarkus
+         max-size: 8
+         min-size: 2
+       username: root
+       password: root
+     redis:
+       hosts: redis://localhost:6379
+       database: 0
+       timeout: 10s
