@@ -8,6 +8,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -36,6 +37,10 @@ public class UserService {
 
     @Transactional(rollbackOn = Exception.class)
     public void create(User user) {
+        entityManager.persist(user);
+    }
+    @Transactional(rollbackOn = Exception.class)
+    public void create2(@Valid User user) {
         entityManager.persist(user);
     }
 
