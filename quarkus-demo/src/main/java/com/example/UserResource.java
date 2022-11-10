@@ -3,6 +3,8 @@ package com.example;
 import com.example.entity.User;
 import com.example.service.UserService;
 import com.example.utils.Result;
+import org.eclipse.microprofile.openapi.annotations.Operation;
+import org.eclipse.microprofile.openapi.annotations.tags.Tag;
 
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
@@ -21,6 +23,7 @@ import java.util.Set;
  * @date 2022/10/28 13:55
  */
 @Path("/user")
+@Tag(name = "UserResource",description = "用户接口列表")
 public class UserResource {
 
     @Inject
@@ -30,12 +33,14 @@ public class UserResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/list")
+    @Operation(summary = "用户列表", description = "这是一个用户列表的接口")
     public List<User> getList() {
         return userService.get();
     }
 
     @Path("/add")
     @POST
+    @Operation(summary = "用户添加", description = "这是一个用户添加的接口")
     public Result tryMeManualValidation(User user) {
         Set<ConstraintViolation<User>> violations = validator.validate(user);
         if (violations.isEmpty()) {
@@ -49,6 +54,7 @@ public class UserResource {
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @Operation(summary = "用户添加", description = "这是一个用户添加的接口")
     public Result tryMeEndPointMethodValidation(User user) {
         try {
             userService.create2(user);
