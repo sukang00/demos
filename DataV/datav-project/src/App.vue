@@ -2,22 +2,25 @@
   <div id="app">
     <HelloWorld msg="Welcome to Your Vue.js App" v-if="show===1" />
     <DecorationDemo v-if="show===2"/>
+    <ChartsDemo v-if="show===3"/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import DecorationDemo from './components/Decoration.vue'
+import ChartsDemo from './components/ChartsDemo.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    DecorationDemo
+    DecorationDemo,
+    ChartsDemo
   },
   data(){
     return {
-      show: 2
+      show: 3
     }
   }
 }
