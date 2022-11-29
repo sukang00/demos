@@ -3,6 +3,7 @@
     <HelloWorld msg="Welcome to Your Vue.js App" v-if="show===1" />
     <DecorationDemo v-if="show===2"/>
     <ChartsDemo v-if="show===3"/>
+    <DynamicRingChart v-if="show===4"/>
   </div>
 </template>
 
@@ -10,17 +11,19 @@
 import HelloWorld from './components/HelloWorld.vue'
 import DecorationDemo from './components/Decoration.vue'
 import ChartsDemo from './components/ChartsDemo.vue'
+import DynamicRingChart from './components/DynamicRingChart.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     DecorationDemo,
-    ChartsDemo
+    ChartsDemo,
+    DynamicRingChart
   },
   data(){
     return {
-      show: 3
+      show: 4
     }
   }
 }
