@@ -4,6 +4,8 @@
     <DecorationDemo v-if="show===2"/>
     <ChartsDemo v-if="show===3"/>
     <DynamicRingChart v-if="show===4"/>
+    <CapsuleChart v-if="show===5"/>
+    <WaterLevel v-if="show===6"/>
   </div>
 </template>
 
@@ -12,6 +14,8 @@ import HelloWorld from './components/HelloWorld.vue'
 import DecorationDemo from './components/Decoration.vue'
 import ChartsDemo from './components/ChartsDemo.vue'
 import DynamicRingChart from './components/DynamicRingChart.vue'
+import CapsuleChart from './components/CapsuleChart.vue'
+import WaterLevel from './components/WaterLevel.vue'
 
 export default {
   name: 'App',
@@ -19,11 +23,13 @@ export default {
     HelloWorld,
     DecorationDemo,
     ChartsDemo,
-    DynamicRingChart
+    DynamicRingChart,
+    CapsuleChart,
+    WaterLevel
   },
   data(){
     return {
-      show: 4
+      show: 6
     }
   }
 }
