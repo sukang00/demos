@@ -6,6 +6,7 @@
     <DynamicRingChart v-if="show===4"/>
     <CapsuleChart v-if="show===5"/>
     <WaterLevel v-if="show===6"/>
+    <PercentPond v-if="show===7"/>
   </div>
 </template>
 
@@ -16,6 +17,7 @@ import ChartsDemo from './components/ChartsDemo.vue'
 import DynamicRingChart from './components/DynamicRingChart.vue'
 import CapsuleChart from './components/CapsuleChart.vue'
 import WaterLevel from './components/WaterLevel.vue'
+import PercentPond from './components/PercentPond.vue'
 
 export default {
   name: 'App',
@@ -25,11 +27,12 @@ export default {
     ChartsDemo,
     DynamicRingChart,
     CapsuleChart,
-    WaterLevel
+    WaterLevel,
+    PercentPond
   },
   data(){
     return {
-      show: 6
+      show: 7
     }
   }
 }
