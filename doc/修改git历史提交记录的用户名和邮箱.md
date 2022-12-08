@@ -19,3 +19,7 @@ fi
 ' --tag-name-filter cat -- --branches --tags
 4. 强制推送
 git push origin main -f
+
+## 修改git当前项目的用户名和邮箱
+git config user.name "新用户名"
+git config user.email "新邮箱"
