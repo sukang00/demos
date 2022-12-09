@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="../sdk/sdk.css" />
+    <link rel="stylesheet" href="../sdk/helper.css" />
+    <link rel="stylesheet" href="../sdk/iconfont.css" />
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="app-wrapper"></div>
+    <div id="root1" class="app-wrapper"></div>
+    <div id="root2" class="app-wrapper"></div>
+    <script src="../sdk/sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+		  "type": "page",
+		  "body": {
+		    "type": "collapse-group",
+		    "activeKey": [
+		      "1"
+		    ],
+		    "expandIcon": {
+		      "type": "icon",
+		      "icon": "caret-right"
+		    },
+		    "body": [
+		      {
+		        "type": "collapse",
+		        "key": "1",
+		        "header": "标题1",
+		        "body": "这里是内容1"
+		      },
+		      {
+		        "type": "collapse",
+		        "key": "2",
+		        "header": "标题2",
+		        "body": "这里是内容2"
+		      },
+		      {
+		        "type": "collapse",
+		        "key": "3",
+		        "header": "标题3",
+		        "body": "这里是内容3"
+		      }
+		    ]
+		  }
+		};
+        let amisScoped = amis.embed('#root', amisJSON, {
+          data: {
+            myData: 'amis'
+            }
+          },
+          {
+            replaceText: {
+              HOST: 'http://localhost'
+            }
+          });
+
+        let amisJSON1 = {
+		  "type": "page",
+		  "body": {
+		    "type": "collapse-group",
+		    "activeKey": [
+		      "1"
+		    ],
+		    "body": [
+		      {
+		        "type": "collapse",
+		        "key": "1",
+		        "header": "标题1",
+		        "body": {
+		          "type": "collapse-group",
+		          "activeKey": [
+		            "1"
+		          ],
+		          "body": [
+		            {
+		              "type": "collapse",
+		              "key": "1",
+		              "header": "嵌套面板标题",
+		              "body": "嵌套面板内容"
+		            }
+		          ]
+		        }
+		      },
+		      {
+		        "type": "collapse",
+		        "key": "2",
+		        "header": "标题2",
+		        "body": "这里是内容2"
+		      }
+		    ]
+		  }
+		};
+        let amisScoped1 = amis.embed('#root1', amisJSON1);
+        let amisJSON2 = {
+		  "type": "page",
+		  "aside": [
+		    {
+		      "type": "tpl",
+		      "tpl": "这是侧边栏部分"
+		    }
+		  ],
+		  "toolbar": [
+		    {
+		      "type": "tpl",
+		      "tpl": "这是工具栏部分"
+		    }
+		  ],
+		  "body": [
+		    {
+		      "type": "tpl",
+		      "tpl": "这是内容区"
+		    }
+		  ]
+		};
+        let amisScoped2 = amis.embed('#root2', amisJSON2);
+      })();
+    </script>
+  </body>
+</html>
