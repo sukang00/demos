@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="../sdk/sdk.css" />
+    <link rel="stylesheet" href="../sdk/helper.css" />
+    <link rel="stylesheet" href="../sdk/iconfont.css" />
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  	<h1>基本用法</h1>
+    <div id="root" class="app-wrapper"></div>
+    <div id="root1" class="app-wrapper"></div>
+    <h1>拖拽排序</h1>
+    <div id="root2" class="app-wrapper"></div>
+    <h1>可增加、删除</h1>
+    <div id="root3" class="app-wrapper"></div>
+    <h1>可编辑标签名</h1>
+    <div id="root4" class="app-wrapper"></div>
+    <script src="../sdk/sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+				  "type": "page",
+				  "body": {
+				    "type": "tabs",
+				    "tabs": [
+				      {
+				        "title": "Tab 1",
+				        "tab": "Content 1"
+				      },
+				      {
+				        "title": "Tab 2",
+				        "tab": "Content 2"
+				      }
+				    ]
+				  }
+				};
+        let amisScoped = amis.embed('#root', amisJSON);
+        let amisJSON1 = {
+			  "type": "page",
+			  "data": {
+			    "arr": [
+			      {
+			        "a": "收入",
+			        "b": 199
+			      },
+			      {
+			        "a": "支出",
+			        "b": 299
+			      }
+			    ]
+			  },
+			  "body": [
+			    {
+			      "type": "tabs",
+			      "source": "${arr}",
+			      "tabs": [
+			        {
+			          "title": "${a}",
+			          "body": {
+			            "type": "tpl",
+			            "tpl": "金额：${b|number}元"
+			          }
+			        }
+			      ]
+			    }
+			  ]
+			}
+			let amisScoped1 = amis.embed('#root1', amisJSON1);
+			let amisJSON2 = {
+			  "type": "page",
+			  "body": {
+			    "type": "tabs",
+			    "draggable": true,
+			    "tabs": [
+			      {
+			        "title": "Tab 1",
+			        "tab": "Content 1"
+			      },
+			      {
+			        "title": "Tab 2",
+			        "tab": "Content 2"
+			      },
+			      {
+			        "title": "Tab 3",
+			        "tab": "Content 3"
+			      }
+			    ]
+			  }
+			}
+			let amisScoped2 = amis.embed('#root2', amisJSON2);
+			let amisJSON3 = {
+			  "type": "page",
+			  "body": {
+			    "type": "tabs",
+			    "closable": true,
+			    "addable": true,
+			    "addBtnText": "新增Tab",
+			    "tabs": [
+			      {
+			        "title": "Tab 1",
+			        "tab": "Content 1",
+			        "closable": false
+			      },
+			      {
+			        "title": "Tab 2",
+			        "tab": "Content 2"
+			      }
+			    ]
+			  }
+			}
+			let amisScoped3 = amis.embed('#root3', amisJSON3);
+			let amisJSON4 = {
+			  "type": "page",
+			  "body": {
+			    "type": "tabs",
+			    "editable": true,
+			    "tabs": [
+			      {
+			        "title": "Tab 1",
+			        "tab": "Content 1"
+			      },
+			      {
+			        "title": "Tab 2",
+			        "tab": "Content 2"
+			      },
+			      {
+			        "title": "双击编辑",
+			        "tab": "Content 2"
+			      }
+			    ]
+			  }
+			}
+			let amisScoped4 = amis.embed('#root4', amisJSON4);
+      })();
+    </script>
+  </body>
+</html>
