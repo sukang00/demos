@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="../sdk/sdk.css" />
+    <link rel="stylesheet" href="../sdk/helper.css" />
+    <link rel="stylesheet" href="../sdk/iconfont.css" />
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  	<h1>基本用法</h1>
+    <div id="root" class="app-wrapper"></div>
+    <h1>尺寸</h1>
+    <div id="root1" class="app-wrapper"></div>
+    <h1>主题</h1>
+    <div id="root2" class="app-wrapper"></div>
+    <script src="../sdk/sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+				  "type": "page",
+				  "body": {
+				    "label": "弹框",
+				    "type": "button",
+				    "actionType": "dialog",
+				    "dialog": {
+				      "title": "弹框",
+				      "body": "这是个简单的弹框。"
+				    }
+				  }
+				};
+        let amisScoped = amis.embed('#root', amisJSON, {
+          data: {
+            myData: 'amis'
+            }
+          },
+          {
+            replaceText: {
+              HOST: 'http://localhost'
+            }
+          });
+
+        let amisJSON1 = {
+				  "type": "page",
+				  "body": {
+				    "type": "button-toolbar",
+				    "buttons": [
+				      {
+				        "type": "button",
+				        "label": "默认尺寸"
+				      },
+				      {
+				        "type": "button",
+				        "label": "极小",
+				        "size": "xs"
+				      },
+				      {
+				        "type": "button",
+				        "label": "小",
+				        "size": "sm"
+				      },
+				      {
+				        "type": "button",
+				        "label": "中等",
+				        "size": "md"
+				      },
+				      {
+				        "type": "button",
+				        "label": "大",
+				        "size": "lg"
+				      }
+				    ]
+				  }
+				};
+        let amisScoped1 = amis.embed('#root1', amisJSON1);
+        let amisJSON2 = {
+			  "type": "page",
+			  "body": {
+			    "type": "button-toolbar",
+			    "buttons": [
+			      {
+			        "type": "button",
+			        "label": "默认"
+			      },
+			      {
+			        "type": "button",
+			        "label": "主要",
+			        "level": "primary"
+			      },
+			      {
+			        "type": "button",
+			        "label": "次要",
+			        "level": "secondary"
+			      },
+			      {
+			        "type": "button",
+			        "label": "信息",
+			        "level": "info"
+			      },
+			      {
+			        "type": "button",
+			        "label": "成功",
+			        "level": "success"
+			      },
+			      {
+			        "type": "button",
+			        "label": "警告",
+			        "level": "warning"
+			      },
+			      {
+			        "type": "button",
+			        "label": "危险",
+			        "level": "danger"
+			      },
+			      {
+			        "type": "button",
+			        "label": "浅色",
+			        "level": "light"
+			      },
+			      {
+			        "type": "button",
+			        "label": "深色",
+			        "level": "dark"
+			      },
+			      {
+			        "type": "button",
+			        "label": "链接",
+			        "level": "link"
+			      }
+			    ]
+			  }
+			};
+        let amisScoped2 = amis.embed('#root2', amisJSON2);
+      })();
+    </script>
+  </body>
+</html>
