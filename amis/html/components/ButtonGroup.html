@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="../sdk/sdk.css" />
+    <link rel="stylesheet" href="../sdk/helper.css" />
+    <link rel="stylesheet" href="../sdk/iconfont.css" />
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  	<h1>基本用法</h1>
+    <div id="root" class="app-wrapper"></div>
+    <h1>垂直模式</h1>
+    <div id="root1" class="app-wrapper"></div>
+    <h1>平铺模式</h1>
+    <div id="root2" class="app-wrapper"></div>
+    <h1>按钮主题样式</h1>
+    <div id="root3" class="app-wrapper"></div>
+   
+    <script src="../sdk/sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+		  "type": "page",
+		  "body": {
+		    "type": "button-group",
+		    "buttons": [
+		      {
+		        "type": "button",
+		        "label": "Button",
+		        "actionType": "dialog",
+		        "dialog": {
+		          "confirmMode": false,
+		          "title": "提示",
+		          "body": "对，你刚点击了！"
+		        }
+		      },
+		      {
+		        "type": "button",
+		        "actionType": "url",
+		        "url": "https://www.baidu.com",
+		        "blank": true,
+		        "label": "百度一下"
+		      },
+		      {
+		        "type": "button",
+		        "label": "普通按钮"
+		      }
+		    ]
+		  }
+		};
+        let amisScoped = amis.embed('#root', amisJSON);
+        let amisJSON1 = {
+			  "type": "page",
+			  "body": [
+			    {
+			      "type": "button-group",
+			      "vertical": true,
+			      "buttons": [
+			        {
+			          "type": "button",
+			          "label": "按钮1"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮2"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮3"
+			        }
+			      ]
+			    }
+			  ]
+			}
+			let amisScoped1 = amis.embed('#root1', amisJSON1);
+			let amisJSON2 = {
+			  "type": "page",
+			  "body": [
+			    {
+			      "type": "button-group",
+			      "tiled": true,
+			      "buttons": [
+			        {
+			          "type": "button",
+			          "label": "按钮1"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮2"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮3"
+			        }
+			      ]
+			    }
+			  ]
+			}
+			let amisScoped2 = amis.embed('#root2', amisJSON2);
+			let amisJSON3 = {
+			  "type": "page",
+			  "body": [
+			    {
+			      "type": "button-group",
+			      "btnLevel": "light",
+			      "btnActiveLevel": "warning",
+			      "buttons": [
+			        {
+			          "type": "button",
+			          "label": "按钮1"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮2"
+			        },
+			        {
+			          "type": "button",
+			          "label": "按钮3",
+			          "level": "primary"
+			        }
+			      ]
+			    }
+			  ]
+			}
+			let amisScoped3 = amis.embed('#root3', amisJSON3);
+			
+      })();
+    </script>
+  </body>
+</html>
