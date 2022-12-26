@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>amis demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <link rel="stylesheet" href="../sdk/sdk.css" />
+    <link rel="stylesheet" href="../sdk/helper.css" />
+    <link rel="stylesheet" href="../sdk/iconfont.css" />
+    <style>
+      html,
+      body,
+      .app-wrapper {
+        position: relative;
+        width: 100%;
+        height: 400px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+  	<h1>AnchorNav 锚点导航</h1>
+    <div id="root" class="app-wrapper"></div>
+    <div id="root1" class="app-wrapper"></div>
+    <script src="../sdk/sdk.js"></script>
+    <script type="text/javascript">
+      (function () {
+        let amis = amisRequire('amis/embed');
+        // 通过替换下面这个配置来生成不同页面
+        let amisJSON = {
+		  "type": "page",
+		  "body": {
+		    "type": "anchor-nav",
+		    "links": [
+		      {
+		        "title": "基本信息",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "基本信息",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "name",
+		                "label": "姓名："
+		              },
+		              {
+		                "name": "email",
+		                "type": "input-email",
+		                "label": "邮箱："
+		              }
+		            ]
+		          }
+		        ]
+		      },
+		      {
+		        "title": "工作信息",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "工作信息",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "cname",
+		                "label": "公司名称："
+		              },
+		              {
+		                "name": "caddress",
+		                "type": "input-text",
+		                "label": "公司地址："
+		              }
+		            ]
+		          }
+		        ]
+		      },
+		      {
+		        "title": "兴趣爱好",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "兴趣爱好",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "interest1",
+		                "label": "兴趣爱好1："
+		              },
+		              {
+		                "name": "interest2",
+		                "type": "input-text",
+		                "label": "兴趣爱好2："
+		              },
+		              {
+		                "name": "interest3",
+		                "type": "input-text",
+		                "label": "兴趣爱好3："
+		              },
+		              {
+		                "name": "interest4",
+		                "type": "input-text",
+		                "label": "兴趣爱好4："
+		              },
+		              {
+		                "name": "interest5",
+		                "type": "input-text",
+		                "label": "兴趣爱好5："
+		              },
+		              {
+		                "name": "interest6",
+		                "type": "input-text",
+		                "label": "兴趣爱好6："
+		              }
+		            ]
+		          }
+		        ]
+		      }
+		    ]
+		  }
+		};
+        let amisScoped = amis.embed('#root', amisJSON, {
+          data: {
+            myData: 'amis'
+            }
+          },
+          {
+            replaceText: {
+              HOST: 'http://localhost'
+            }
+          });
+
+        let amisJSON1 = {
+		  "type": "page",
+		  "body": {
+		    "type": "anchor-nav",
+		    "direction": "horizontal",
+		    "links": [
+		      {
+		        "title": "基本信息",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "基本信息",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "name",
+		                "label": "姓名："
+		              },
+		              {
+		                "name": "email",
+		                "type": "input-email",
+		                "label": "邮箱："
+		              }
+		            ]
+		          }
+		        ]
+		      },
+		      {
+		        "title": "工作信息",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "工作信息",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "cname",
+		                "label": "公司名称："
+		              },
+		              {
+		                "name": "caddress",
+		                "type": "input-text",
+		                "label": "公司地址："
+		              }
+		            ]
+		          }
+		        ]
+		      },
+		      {
+		        "title": "兴趣爱好",
+		        "body": [
+		          {
+		            "type": "form",
+		            "title": "兴趣爱好",
+		            "body": [
+		              {
+		                "type": "input-text",
+		                "name": "interest1",
+		                "label": "兴趣爱好1："
+		              },
+		              {
+		                "name": "interest2",
+		                "type": "input-text",
+		                "label": "兴趣爱好2："
+		              },
+		              {
+		                "name": "interest3",
+		                "type": "input-text",
+		                "label": "兴趣爱好3："
+		              },
+		              {
+		                "name": "interest4",
+		                "type": "input-text",
+		                "label": "兴趣爱好4："
+		              },
+		              {
+		                "name": "interest5",
+		                "type": "input-text",
+		                "label": "兴趣爱好5："
+		              },
+		              {
+		                "name": "interest6",
+		                "type": "input-text",
+		                "label": "兴趣爱好6："
+		              }
+		            ]
+		          }
+		        ]
+		      }
+		    ]
+		  }
+		};
+        let amisScoped1 = amis.embed('#root1', amisJSON1);
+        
+      })();
+    </script>
+  </body>
+</html>
