@@ -21,8 +21,17 @@ public class HelloController {
     public String hello(){
         return "hello";
     }
+
+    @GetMapping("/hello/user")
+    public String hello(String userName){
+        return userName;
+    }
     @GetMapping("/forestHello")
     public String forestHello(){
         return myService.testClient();
+    }
+    @GetMapping("/forestHello/user")
+    public String sendRequest(String userName){
+        return myService.sendRequest(userName);
     }
 }
