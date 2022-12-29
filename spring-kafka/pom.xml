@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>sample-01</module>
+        <module>sample-02</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
