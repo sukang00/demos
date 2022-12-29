@@ -34,4 +34,9 @@ public class HelloController {
     public String sendRequest(String userName){
         return myService.sendRequest(userName);
     }
+
+    @GetMapping("/forestHelloAddress")
+    public String forestHelloAddress(){
+        return myService.testHelloForest();
+    }
 }
