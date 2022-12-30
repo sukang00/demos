@@ -1,0 +1,11 @@
+spring:
+  rabbitmq:
+    host: 10.0.24.133
+    port: 5672
+    username: yuanyang
+    password: yuanyang
+    virtual-host: testHost
+    publisher-confirm-type: correlated
+    publisher-returns: true
+server:
+  port: 8081
