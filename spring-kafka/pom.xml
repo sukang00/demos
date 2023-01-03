@@ -12,6 +12,7 @@
         <module>sample-01</module>
         <module>sample-02</module>
         <module>sample-03</module>
+        <module>sample-04</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
