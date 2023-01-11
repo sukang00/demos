@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>cache-redis-demo</module>
+        <module>cache-caffeine</module>
     </modules>
 
     <parent>
