@@ -11,6 +11,7 @@
     <modules>
         <module>cache-redis-demo</module>
         <module>cache-caffeine</module>
+        <module>cache-redis-caffeine</module>
     </modules>
 
     <parent>
