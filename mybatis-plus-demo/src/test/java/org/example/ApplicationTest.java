@@ -1,6 +1,8 @@
 package org.example;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.example.entity.User;
 import org.example.mapper.UserMapper;
@@ -39,5 +41,27 @@ public class ApplicationTest {
         System.out.println("总页数： " + userPage.getPages());
         System.out.println("总记录数： " + userPage.getTotal());
         userPage.getRecords().forEach(System.out::println);
+    }
+
+    /**
+     * 测试(Wrappers.lambdaQuery 使用
+     */
+    @Test
+    public void testList(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).ge(User::getAge, 18).le(User::getAge,24));
+        users.forEach(user -> System.out.println(user.getName()));
+    }
+
+    /**
+     * 测试@Data
+     * @Accessors(chain = true) 使用
+     */
+    @Test
+    public void testUpdate(){
+        User user = userMapper.selectOne(Wrappers.lambdaQuery(User.class).eq(User::getId, 1));
+        user.setName("测试").setEmail("ceshi@189.com").setAge(60);
+        userMapper.updateById(user);
+        User userQuery = userMapper.selectOne(Wrappers.lambdaQuery(User.class).eq(User::getId, 1));
+        System.out.println(userQuery.toString());
     }
 }
