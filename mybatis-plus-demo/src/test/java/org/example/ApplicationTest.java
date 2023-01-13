@@ -64,4 +64,19 @@ public class ApplicationTest {
         User userQuery = userMapper.selectOne(Wrappers.lambdaQuery(User.class).eq(User::getId, 1));
         System.out.println(userQuery.toString());
     }
+    @Test
+    public void testSelectLast(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).ge(User::getAge, 18).le(User::getAge,24).last("order by id desc limit 2"));
+        users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
+    @Test
+    public void testSelectApply(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).ge(User::getAge, 18).le(User::getAge,24).apply("name = {0}", "Sa"));
+        users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
+    @Test
+    public void testSelect1(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).select(User::getName).ge(User::getAge, 18).le(User::getAge,24));
+        users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
 }
