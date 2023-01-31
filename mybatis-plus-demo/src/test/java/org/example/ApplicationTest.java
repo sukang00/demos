@@ -79,4 +79,14 @@ public class ApplicationTest {
         List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).select(User::getName).ge(User::getAge, 18).le(User::getAge,24));
         users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
     }
+    @Test
+    public void testSelectLike(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).like(User::getName,"T"));
+        users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
+    @Test
+    public void testSelectLikeRight(){
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).likeRight(User::getName,"T"));
+        users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
 }
