@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -38,5 +40,9 @@ public class User implements Serializable {
      * 邮箱
      */
     private String email;
+
+    @TableLogic
+//    @TableField(value = "flag")
+    private Integer flag;
 
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author sukang
@@ -88,5 +89,26 @@ public class ApplicationTest {
     public void testSelectLikeRight(){
         List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).likeRight(User::getName,"T"));
         users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
+    }
+    @Test
+    public void testDelById(){
+        userMapper.deleteById(2);
+        User user1 = userMapper.selectById(2);
+        if (Objects.nonNull(user1)){
+            System.out.println(user1.toString());
+        }
+
+    }
+    @Test
+    public void testupdateById(){
+        User user = new User();
+        user.setId(3L);
+        user.setAge(50);
+        userMapper.updateById(user);
+        User user1 = userMapper.selectById(3);
+        if (Objects.nonNull(user1)){
+            System.out.println(user1.toString());
+        }
+
     }
 }
