@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.example.entity.User;
+import org.example.mapper.TestMapper;
 import org.example.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -25,6 +26,9 @@ public class ApplicationTest {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private TestMapper testMapper;
 
     @Test
     public void testSelect() {
@@ -90,6 +94,10 @@ public class ApplicationTest {
         List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).likeRight(User::getName,"T"));
         users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
     }
+
+    /**
+     * 测试软删除
+     */
     @Test
     public void testDelById(){
         userMapper.deleteById(2);
@@ -99,6 +107,10 @@ public class ApplicationTest {
         }
 
     }
+
+    /**
+     * 测试更新查询自动添加逻辑删除字段
+     */
     @Test
     public void testupdateById(){
         User user = new User();
@@ -110,5 +122,49 @@ public class ApplicationTest {
             System.out.println(user1.toString());
         }
 
+    }
+
+    /**
+     * 添加逻辑自动在表上设置默认值
+     *
+     */
+    @Test
+    public void testInsertTest(){
+        org.example.entity.Test test = new org.example.entity.Test();
+        test.setId(1L);
+        test.setRemark("123");
+        test.setUserId(9L);
+        testMapper.insert(test);
+    }
+
+    /**
+     * 测试多表继承是否会自动代入删除字段
+     */
+    @Test
+    public void testTupdateById(){
+        org.example.entity.Test test = new org.example.entity.Test();
+        test.setId(1L);
+        test.setRemark("无论3");
+        test.setUserId(9L);
+        testMapper.updateById(test);
+        org.example.entity.Test test2 = testMapper.selectById(1L);
+        if (Objects.nonNull(test2)){
+            System.out.println(test2.toString());
+        }
+
+    }
+    @Test
+    public void testDelTest(){
+        testMapper.deleteById(1L);
+    }
+
+    /**
+     * 自己手动写的sql需要自己添加删除标记
+     */
+    @Test
+    public void testManualQuery(){
+        User user = new User();
+        user.setId(2L);
+        User userByInfo = userMapper.getUserByInfo(user);
     }
 }
