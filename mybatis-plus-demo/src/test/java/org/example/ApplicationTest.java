@@ -2,6 +2,7 @@ package org.example;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.IdWorker;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.example.entity.User;
@@ -131,7 +132,7 @@ public class ApplicationTest {
     @Test
     public void testInsertTest(){
         org.example.entity.Test test = new org.example.entity.Test();
-        test.setId(1L);
+        test.setId(2L);
         test.setRemark("123");
         test.setUserId(9L);
         testMapper.insert(test);
@@ -166,5 +167,6 @@ public class ApplicationTest {
         User user = new User();
         user.setId(2L);
         User userByInfo = userMapper.getUserByInfo(user);
+        System.out.println(IdWorker.getIdStr());
     }
 }
