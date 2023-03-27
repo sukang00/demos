@@ -1,0 +1,7 @@
+ews:
+  serverHost: XXX
+  domainAccount: XXX
+  account: XXX
+  password: XXX
+server:
+  port: 8990
