@@ -77,7 +77,7 @@ public class ApplicationTest {
     }
     @Test
     public void testSelectApply(){
-        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).ge(User::getAge, 18).le(User::getAge,24).apply("name = {0}", "Sa"));
+        List<User> users = userMapper.selectList(Wrappers.lambdaQuery(User.class).ge(User::getAge, 18).le(User::getAge,24).apply("name = {0}", "Sa").last("order by id desc limit 2"));
         users.forEach(user -> System.out.println(user.getId()+ ":" + user.getName()));
     }
     @Test
