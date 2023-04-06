@@ -23,3 +23,7 @@ git push origin main -f
 ## 修改git当前项目的用户名和邮箱
 git config user.name "新用户名"
 git config user.email "新邮箱"
+
+
+## 删除git本地分支
+git branch -D master 
