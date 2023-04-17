@@ -28,8 +28,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.scheduling.annotation.Async;
 
 /**
- * Simple repository interface for {@link User} instances. The interface is used to declare the so-called query methods,
- * i.e. methods to retrieve single entities or collections of them.
+ * 用于 {@link User} 实例的简单存储库界面。该接口用于声明所谓的查询方法，
+ *  即检索单个实体或其集合的方法。
  *
  * @author Oliver Gierke
  * @author Thomas Darimont
@@ -38,8 +38,7 @@ import org.springframework.scheduling.annotation.Async;
 public interface SimpleUserRepository extends CrudRepository<User, Long> {
 
 	/**
-	 * Find the user with the given username. This method will be translated into a query using the
-	 * {@link jakarta.persistence.NamedQuery} annotation at the {@link User} class.
+	 * 查找具有给定用户名的用户。此方法将使用
 	 *
 	 * @param username
 	 * @return
@@ -55,8 +54,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	Optional<User> findByUsername(Optional<String> username);
 
 	/**
-	 * Find all users with the given lastname. This method will be translated into a query by constructing it directly
-	 * from the method name as there is no other query declared.
+	 * 此方法将通过直接从方法名称构造查询来转换为查询，因为没有声明其他查询。
 	 *
 	 * @param lastname
 	 * @return
@@ -64,8 +62,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	List<User> findByLastname(String lastname);
 
 	/**
-	 * Returns all users with the given firstname. This method will be translated into a query using the one declared in
-	 * the {@link Query} annotation declared one.
+	 * 返回具有给定名字的所有用户。此方法将使用在声明的 {@link Query} 注释中声明的查询转换为查询。
 	 *
 	 * @param firstname
 	 * @return
@@ -74,8 +71,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	List<User> findByFirstname(String firstname);
 
 	/**
-	 * Returns all users with the given name as first- or lastname. This makes the query to method relation much more
-	 * refactoring-safe as the order of the method parameters is completely irrelevant.
+	 * 返回以名字或姓氏作为给定名称的所有用户。这使得查询到方法关系的重构更加安全，因为方法参数的顺序完全无关紧要。
 	 *
 	 * @param name
 	 * @return
@@ -84,7 +80,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	List<User> findByFirstnameOrLastname(String name);
 
 	/**
-	 * Returns the total number of entries deleted as their lastnames match the given one.
+	 * 返回删除的条目总数，因为它们的姓氏与给定的姓氏匹配。
 	 *
 	 * @param lastname
 	 * @return
@@ -92,8 +88,8 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	Long removeByLastname(String lastname);
 
 	/**
-	 * Returns a {@link Slice} counting a maximum number of {@link Pageable#getPageSize()} users matching given criteria
-	 * starting at {@link Pageable#getOffset()} without prior count of the total number of elements available.
+	 * 返回一个 {@link Slice}，用于计算与给定条件匹配的 {@link Pageable#getPageSize（）} 用户的最大数量
+	 *  从 {@link Pageable#getOffset（）} 开始，不事先计算可用元素总数。
 	 *
 	 * @param lastname
 	 * @param page
@@ -145,8 +141,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	}
 
 	/**
-	 * Sample method to demonstrate support for {@link Stream} as a return type with a custom query. The query is executed
-	 * in a streaming fashion which means that the method returns as soon as the first results are ready.
+	 * 演示对 {@link Stream} 作为具有自定义查询的返回类型的支持的示例方法。查询以流式处理方式执行，这意味着该方法在第一个结果准备就绪后立即返回。
 	 *
 	 * @return
 	 */
