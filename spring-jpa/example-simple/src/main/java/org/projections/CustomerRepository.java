@@ -65,7 +65,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 	<T> Collection<T> findByFirstname(String firstname, Class<T> projection);
 
 	/**
-	 * Projection for a single entity.
+	 * 单个实体的投影。
 	 *
 	 * @param id
 	 * @return
@@ -82,7 +82,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Long> {
 	<T> T findProjectedById(Long id, Class<T> projection);
 
 	/**
-	 * Projections used with pagination.
+	 * 与分页一起使用的投影。
 	 *
 	 * @param pageable
 	 * @return
