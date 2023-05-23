@@ -27,3 +27,20 @@ git config user.email "新邮箱"
 
 ## 删除git本地分支
 git branch -D master 
+
+# fork github的开源代码到gitee上实现加速下载
+
+## 指定fork 的上游仓库
+git remote add upstream <github地址>
+
+## 验证
+git remote -v
+
+## 获取原仓库的更新,fetch后会存储在本地分支upstream/master上
+git fetch upstream
+
+## 合并到本地分支，切换到本地master,合并pstream/master分支
+git merge upstream/master
+
+## 推送远程分支
+git push origin master
