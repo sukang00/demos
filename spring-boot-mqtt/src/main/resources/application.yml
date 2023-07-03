@@ -1,0 +1,19 @@
+mqtt:
+  broker1:
+    username: ''
+    password: ''
+    serverURIs: tcp://broker.emqx.io:1883
+    clientid: device1_
+    topic: topic1
+    timeout: 5000
+    keepalive: 60
+    cleanSession: true
+  broker2:
+    username: ''
+    password: ''
+    serverURIs: tcp://broker.emqx.io:1883
+    clientid: device2_
+    topic: topic2
+    timeout: 5000
+    keepalive: 60
+    cleanSession: true
