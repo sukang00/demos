@@ -1,7 +1,10 @@
 package com.example.forestdemo.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.dtflys.forest.Forest;
 import com.example.forestdemo.client.MyClient;
 import com.example.forestdemo.client.MyClientAddress;
+import com.example.forestdemo.model.LoginData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -43,5 +46,12 @@ public class MyService {
 
     public String testHelloForest(){
         return myClientAddress.helloForest();
+    }
+
+    public String testForestGetJson(){
+        LoginData loginData = new LoginData();
+        loginData.setMsg("123");
+        loginData.setUserId("556");
+        return myClientAddress.getJSONBodyTest(loginData);
     }
 }

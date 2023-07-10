@@ -1,10 +1,15 @@
 package com.example.forestdemo.controller;
 
+import com.alibaba.fastjson.JSONObject;
+import com.example.forestdemo.model.LoginData;
 import com.example.forestdemo.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author sukang
@@ -18,8 +23,8 @@ public class HelloController {
     @Autowired
     private MyService myService;
     @GetMapping("/hello")
-    public String hello(){
-        return "hello";
+    public String hello(@RequestBody LoginData loginData){
+        return JSONObject.toJSONString(loginData);
     }
 
     @GetMapping("/hello/user")
@@ -38,5 +43,10 @@ public class HelloController {
     @GetMapping("/forestHelloAddress")
     public String forestHelloAddress(){
         return myService.testHelloForest();
+    }
+
+    @GetMapping("/forestGetJson")
+    public String forestGetJson(){
+        return myService.testForestGetJson();
     }
 }

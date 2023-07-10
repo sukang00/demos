@@ -1,10 +1,8 @@
 package com.example.forestdemo.client;
 
-import com.dtflys.forest.annotation.Address;
-import com.dtflys.forest.annotation.Get;
-import com.dtflys.forest.annotation.Query;
-import com.dtflys.forest.annotation.Request;
+import com.dtflys.forest.annotation.*;
 import com.dtflys.forest.http.ForestRequest;
+import com.example.forestdemo.model.LoginData;
 
 /**
  * @author sukang
@@ -20,4 +18,6 @@ public interface MyClientAddress {
 
     @Get("/hello/user")
     String sendRequest(@Query("userName") String userName);
+    @Get("/hello")
+    String getJSONBodyTest(@JSONBody LoginData loginData);
 }
