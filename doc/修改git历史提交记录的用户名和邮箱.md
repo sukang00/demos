@@ -44,3 +44,17 @@ git merge upstream/master
 
 ## 推送远程分支
 git push origin master
+
+## 添加github
+### 1. 生成ssh key
+ssh-keygen -t rsa -C 'XX@XX.com'
+### 2. id_rsa.pub 复制内容
+### 3. github的Settings添加ssh key，把刚才复制的内容粘贴上去保存即可
+### 4. 验证是否设置成功
+ssh -T git@github.com
+
+### 5. 如果弹出
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+## git 项目报错 filename too long
+git config --system core.longpaths true
