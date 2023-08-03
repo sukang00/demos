@@ -11,6 +11,7 @@
     <modules>
         <module>spring-socket-server</module>
         <module>spring-socket-client</module>
+        <module>spring-mina</module>
     </modules>
 
     <properties>

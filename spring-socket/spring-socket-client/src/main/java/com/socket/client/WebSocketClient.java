@@ -24,7 +24,7 @@ public class WebSocketClient {
     @OnOpen
     public void onOpen(Session session) {
         log.info("WebSocket opened: " + session.getId());
-        SocketManager.add(session.getId(),session);
+        SocketManager.add(ConstantUtil.KEY,session);
         session.getAsyncRemote().sendText("hello, server!");
 
     }
@@ -35,7 +35,7 @@ public class WebSocketClient {
     @OnClose
     public void onClose(Session session) {
         log.info("WebSocket closed: " + session.getId());
-        SocketManager.removeAndClose(session.getId());
+        SocketManager.removeAndClose(ConstantUtil.KEY);
     }
     @OnError
     public void onError(Throwable error) {

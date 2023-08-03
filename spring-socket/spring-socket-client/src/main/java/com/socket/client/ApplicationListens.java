@@ -2,6 +2,7 @@ package com.socket.client;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,8 @@ import java.net.URI;
 @Component
 public class ApplicationListens implements CommandLineRunner, DisposableBean {
 
+    @Autowired
+    private SocketCompent socketCompent;
     @Override
     public void destroy() throws Exception {
         SocketManager.closeAll();
@@ -26,19 +29,8 @@ public class ApplicationListens implements CommandLineRunner, DisposableBean {
 
     @Override
     public void run(String... args) throws Exception {
-        connect();
+        socketCompent.connect();
     }
 
-    /**
-     * 连接
-     */
-    private void connect(){
-        try {
-            WebSocketContainer container = ContainerProvider.getWebSocketContainer();
-            String uri = "ws://localhost:8088/websocket"; // Replace with your WebSocket server URL
-            container.connectToServer(WebSocketClient.class, URI.create(uri));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }
