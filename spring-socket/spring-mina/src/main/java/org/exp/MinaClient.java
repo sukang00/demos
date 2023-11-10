@@ -76,7 +76,7 @@ public class MinaClient {
             @Override
             public void messageReceived(IoSession session, Object message) throws Exception {
                 super.messageReceived(session, message);
-                log.info("messageReceived");
+                log.info("messageReceived:{}",message);
             }
 
             @Override
