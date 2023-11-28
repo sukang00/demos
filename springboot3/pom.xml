@@ -17,6 +17,7 @@
     <modules>
         <module>hello-world</module>
         <module>scheduling-tasks-complete</module>
+        <module>upload</module>
     </modules>
 
 
